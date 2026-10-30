@@ -10,7 +10,54 @@ An open-source English practice plugin for DeepSeek Harness. Practice everyday c
 - 默认跟随 DSH 系统模型，可手动选择；支持取消与生成进度。
 - 原生主面板与右侧面板，适配小窗口滚动。
 
-## 安装与开发
+## 安装方式（按 DSH 官方 Bundle 规范）
+
+这是非官方社区插件，由 qiufengsir 独立维护。兼容 DSH **0.2.1-rc.3**，其他版本尚未验证。
+
+### 预构建安装包（推荐）
+
+从 [Releases](https://github.com/qiufengsir/dsh-english-break/releases) 下载最新的预构建 `.tgz`，使用 DSH 插件安装入口选择文件，或完全退出桌面版后运行：
+
+```sh
+dsh plugin --profile desktop add ./dsh-english-break-0.3.0-alpha.2.tgz
+```
+
+预构建包不需要授权源码构建脚本。
+
+### GitHub 源码安装
+
+```sh
+dsh plugin --profile desktop add github:qiufengsir/dsh-english-break#v0.3.0-alpha.2
+```
+
+包内 `prepare` 会从源码构建。pnpm 10+ 第一次可能拒绝执行构建；按终端提示，将它打印的**确切包键**加入该 profile 的 `pnpm-workspace.yaml`，再重试。常见形式：
+
+```yaml
+allowBuilds:
+  dsh-english-break: true
+```
+
+这项授权允许运行本项目构建代码。只为可信源码授权，建议将版本标签替换为本次发布的固定提交 SHA。无需修改 DSH 安装目录，`dsh.bundle.patch` 会注册插件。
+
+### 在「插件 → 发现」添加市场索引
+
+在 DSH 启用「实验性插件 → 自定义插件市场」，进入「插件 → 发现 → 添加索引源」，填写：
+
+```text
+https://qiufengsir.github.io/dsh-english-break/index.json
+```
+
+这是本项目自己维护的市场源，不是官方审核或默认收录。索引使用 `format: 1`，固定 Git 提交、版本和兼容范围。Git 来源的安装仍需上述构建授权。Pages 暂不可访问时可备用：`https://raw.githubusercontent.com/qiufengsir/dsh-english-break/main/docs/index.json`。
+
+### 界面示意
+
+下图来自原生 DSH Web Host 集成测试，使用固定模型响应，不是学习效果或真实模型质量证明。
+
+![英语空档界面](docs/screenshots/practice.png)
+
+发布规范：[打包与安装插件](https://deepseek-harness.github.io/deepseek-harness/develop/basic/publish)。
+
+## 源码开发
 
 当前兼容 **DeepSeek Harness 0.2.1-rc.3**，开发环境需要 Node.js 24 或更新版本。
 
@@ -61,7 +108,7 @@ MIT. See [LICENSE](LICENSE).
 
 左侧「英语空档」打开完整面板，也可在会话右侧选择「英语空档」。先在设置里选择 DSH 已配置的模型，再点击「练两分钟」。包含 6 个日常、6 个工作场景、渐进提示、造句反馈、再次表达、收藏与到期复习。没有模型时可使用参考句练习。
 
-只有提交反馈才调用模型，可能产生所选服务的用量费用。插件不读取工作对话、代码或剪贴板，不将练习写入工作会话。不提供语音识别或发音评分。
+提交反馈、追问或生成随机话题会调用模型，可能产生所选服务的用量费用。插件不读取工作对话、代码或剪贴板，不将练习写入工作会话。不提供语音识别或发音评分。
 
 学习记录默认位于 DSH home 下 `storages/dsh-english-break/state.json`。草稿切换面板后保留，输入约 400ms 后保存；保存完成后重启可恢复。设置支持 JSON 导入导出，导入替换当前进度。收藏不代表掌握，首次收藏次日复习。
 

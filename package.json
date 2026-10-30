@@ -1,6 +1,6 @@
 {
   "name": "dsh-english-break",
-  "version": "0.3.0-alpha.1",
+  "version": "0.3.0-alpha.2",
   "type": "module",
   "description": "英语空档：日常与工作英语碎片练习",
   "main": "dist/index.js",
@@ -42,7 +42,9 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.client.json",
-    "test": "npm run build && node --test tests/*.test.mjs"
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "prepare": "node scripts/build.mjs",
+    "prepack": "node scripts/build.mjs"
   },
   "license": "MIT",
   "repository": {
@@ -66,5 +68,12 @@
     "esbuild": "^0.25.0",
     "react": "^18.3.0",
     "typescript": "^5.9.0"
-  }
+  },
+  "author": "qiufengsir",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "english-learning",
+    "language-learning"
+  ]
 }

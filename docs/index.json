@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "title": {
+    "en": "English Break Community Market",
+    "zh": "英语空档社区插件市场"
+  },
+  "description": {
+    "en": "Unofficial community plugins maintained by qiufengsir.",
+    "zh": "qiufengsir 维护的非官方社区插件源。"
+  },
+  "plugins": [
+    {
+      "name": "dsh-english-break",
+      "title": {
+        "en": "English Break",
+        "zh": "英语空档"
+      },
+      "description": {
+        "en": "Everyday and workplace English practice during short breaks.",
+        "zh": "在工作间隙练习日常口语和工作英语。"
+      },
+      "icon": "icons/english-break.svg",
+      "author": "qiufengsir",
+      "homepage": "https://github.com/qiufengsir/dsh-english-break",
+      "repository": {
+        "url": "https://github.com/qiufengsir/dsh-english-break"
+      },
+      "metadata": {
+        "keywords": [
+          "english",
+          "learning",
+          "英语",
+          "口语"
+        ]
+      },
+      "dist-tags": {
+        "latest": "0.3.0-alpha.2"
+      },
+      "versions": [
+        {
+          "version": "0.3.0-alpha.2",
+          "publishTimestamp": 1793318403,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/qiufengsir/dsh-english-break",
+            "commit": "d2dc772c41726404cc23bcd01568ba53cfe9e64d"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.3"
+          }
+        }
+      ]
+    }
+  ]
+}
